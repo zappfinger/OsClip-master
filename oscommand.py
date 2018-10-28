@@ -17,7 +17,7 @@ from subprocess import Popen, PIPE, STDOUT
 import json
 
 """
-	enter the name of the SQLite machine to connect to
+	enter the name of the SQLite client machine to connect to
 """
 ##########################
 name = 'Macbook'
