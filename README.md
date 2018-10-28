@@ -14,6 +14,7 @@ A SQLite config database is used that should contain all the names and IP adress
 7. Run OscQliteCli.py on the client.
 
 Now you can execute commands on the server, like 'dir',  or 'cd ..'.
+
 SQL commands should start with 'SQL@', e.g. 'SQL@select * from employees'
 ('employees' is an example table in the 'remote' SQLite database. You can add tables the normal way,
 e.g. 'SQL@CREATE TABLE tablename ...' )
