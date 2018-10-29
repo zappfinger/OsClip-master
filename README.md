@@ -1,7 +1,7 @@
 # SQLite_server
 Remote SQLite and commands tool.
 
-This tool allows to connect and perform queries to a SQLite database on any computer. (PC, Mac, Raspberry Pi)
+This tool allows to connect and perform queries to a SQLite database on any remote computer. (PC, Mac, Raspberry Pi)
 The tool also can be used to execute commands on the remote system.
 A SQLite config database is used that should contain all the names and IP adresses of the systems (in table nodes)
 
