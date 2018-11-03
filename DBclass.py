@@ -14,8 +14,9 @@ showselects = 0
 showexecute = 1
 
 class db(object):
-	def __init__( self, dbname = './config.sqlite' ):
-		self.DBFILE = dbname
+	def __init__( self, dbname = 'config.sqlite' ):
+		self.DBFILE = os.path.join('OscQLite', dbname)
+		print(self.DBFILE)
 		#self.conn = sqlite3.connect(self.DBFILE, detect_types=sqlite3.PARSE_DECLTYPES,check_same_thread = False )
 		self.conn = sqlite3.connect(self.DBFILE, check_same_thread=False)
 		#self.conn.row_factory = sqlite3.Row     # allows query results as dictionaries
@@ -52,9 +53,13 @@ class db(object):
 
 	def select(self, selq):
 		if showselects: print(selq)
-		self.cur.execute(selq)
-		rows = self.cur.fetchall()
-		return rows
+		try:
+			self.cur.execute(selq)
+			rows = self.cur.fetchall()
+			return rows
+		except sqlite3.Error as e:
+			print("Error %s:" % e.args[0])
+			return "Error %s:" % e.args[0]
 
 	def exists(self, selq):     # returns true or false depending on query
 		self.cur.execute(selq)
@@ -68,10 +73,9 @@ class db(object):
 
 if __name__ == '__main__':
 	conf = db()
-	#instr = csdb.select("select * from templates where name ='Single with effects'")
-	#print(instr[0]['instrument0'])
-	#res = csdb.select('select * from instruments')
-	#print(res)
 	name = 'PCToos'
 	ip = conf.select('select IP from nodes where name="%s" ' % name)
 	print(ip[0][0])
+	rem = db('remote')
+	res = rem.select('select * from employees')
+	print(res)

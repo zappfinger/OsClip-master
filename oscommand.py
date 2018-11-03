@@ -20,7 +20,8 @@ import json
 	enter the name of the SQLite client machine to connect to
 """
 ##########################
-name = 'Macbook'
+#name = 'Macbook'
+name = 'Pi3B+'
 ##########################
 conf = db()
 otherIP = conf.select('select IP from nodes where name="%s" ' % name)[0][0]
@@ -80,8 +81,10 @@ if __name__ == "__main__":
 	print('Opening config database')
 	conf = db()
 	dbname = conf.select('select lastDB from persist')[0][0]
+	print('lastDB from persist: %s' % dbname)
 	db = db(dbname)
-	print('connecting to remote database %s' % dbname)
+	#print('connecting to remote database %s' % dbname)
+	print('starting SQLite server')
 	#
 	def worker1():
 		serv = server('0.0.0.0', 8889)

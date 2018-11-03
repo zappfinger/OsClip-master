@@ -19,8 +19,8 @@ import json
 	enter the name of the SQLite machine to connect to
 """
 ##########################
-#name = 'Pi3B+'
-name = 'PCToos'
+name = 'Pi3B+'
+#name = 'Acer'
 ##########################
 conf = db()
 otherIP = conf.select('select IP from nodes where name="%s" ' % name)[0][0]
