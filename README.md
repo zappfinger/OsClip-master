@@ -1,5 +1,5 @@
 # SQLite_server
-Remote SQLite and commands tool.
+Remote SQLite and commands tool. (based on python-osc, so pip install that first!)
 
 This tool allows to connect and perform queries to a SQLite database on any remote computer. (PC, Mac, Raspberry Pi).
 
