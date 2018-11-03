@@ -15,9 +15,8 @@ showexecute = 1
 
 class db(object):
 	def __init__( self, dbname = 'config.sqlite' ):
-		self.DBFILE = os.path.join('OscQLite', dbname)
+		self.DBFILE = os.path.join('', dbname)
 		print(self.DBFILE)
-		#self.conn = sqlite3.connect(self.DBFILE, detect_types=sqlite3.PARSE_DECLTYPES,check_same_thread = False )
 		self.conn = sqlite3.connect(self.DBFILE, check_same_thread=False)
 		#self.conn.row_factory = sqlite3.Row     # allows query results as dictionaries
 		self.cur = self.conn.cursor()
