@@ -3,8 +3,10 @@
 OsCommand: remote command server
 
 by:			zappfinger (Richard van Bemmelen)
-version:	1.0
-date:		28-10-2018
+version:	1.1
+date:		21-11-2018
+
+1.1			added delete option
 
 """
 
@@ -57,6 +59,8 @@ class server():
 		elif 'CREATE' in qrytext or 'create' in qrytext:
 			res = db.exec(qrytext)
 		elif 'INSERT' in qrytext or 'insert' in qrytext:
+			res = db.exec(qrytext)
+		elif 'DELETE' in qrytext or 'delete' in qrytext:
 			res = db.exec(qrytext)
 		#if len(res)==0:
 		#	res='OK'
