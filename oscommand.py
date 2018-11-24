@@ -3,18 +3,22 @@
 OsCommand: remote command server
 
 by:			zappfinger (Richard van Bemmelen)
-version:	1.1
-date:		21-11-2018
+version:	1.2
+date:		24-11-2018
 
 1.1			added delete option
+1.2			removed command.py dependency
 
 """
 
 from pythonosc import dispatcher
 from pythonosc import osc_server, udp_client
+import os, time
+from os import listdir
+from os.path import isfile, join
+from DBclass import *
 import threading
 from queue import Queue
-from commands import *
 from subprocess import Popen, PIPE, STDOUT
 import json
 

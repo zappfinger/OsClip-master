@@ -10,10 +10,10 @@ date:		27-10-2018
 
 from pythonosc import dispatcher
 from pythonosc import osc_server, udp_client
-import threading
+import threading, time
 from queue import Queue
-from commands import *
 import json
+from DBclass import *
 
 """
 	enter the name of the SQLite machine to connect to

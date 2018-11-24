@@ -14,7 +14,7 @@ showselects = 0
 showexecute = 1
 
 class db(object):
-	def __init__( self, dbname = 'config.sqlite' ):
+	def __init__( self, dbname = './config.sqlite' ):
 		self.DBFILE = os.path.join('', dbname)
 		print(self.DBFILE)
 		self.conn = sqlite3.connect(self.DBFILE, check_same_thread=False)
