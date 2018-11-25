@@ -64,6 +64,8 @@ class server():
 			res = db.exec(qrytext)
 		elif 'INSERT' in qrytext or 'insert' in qrytext:
 			res = db.exec(qrytext)
+		elif 'UPDATE' in qrytext or 'update' in qrytext:
+			res = db.exec(qrytext)
 		elif 'DELETE' in qrytext or 'delete' in qrytext:
 			res = db.exec(qrytext)
 		#if len(res)==0:
