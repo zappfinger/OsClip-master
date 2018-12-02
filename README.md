@@ -11,7 +11,7 @@ A SQLite config database is used that should contain all the names and IP adress
 3. Copy all files (including the modified config.sqlite) to all relevent systems
 4. On the system that should be the SQLite server, edit oscommand.py name variable to point to the client
 5. Run oscommand.py on the server.
-6. On the client system, edit OscQLiteCli.py name variable to point to the server
+6. On the client system, edit OscQLiteCli.py and SQLiteClient.py name variable to point to the server
 7. Run OscQliteCli.py or SQLiteClient.py (see NOTE) on the client.
 
 With OscQliteCli you can execute commands and SQL commands on the server, like 'dir',  or 'cd ..'.
