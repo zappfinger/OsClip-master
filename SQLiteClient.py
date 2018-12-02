@@ -12,9 +12,9 @@ from pythonosc import dispatcher
 from pythonosc import osc_server, udp_client
 import threading
 from queue import Queue
-from commands import *
 import time
 import json
+from DBclass import *
 
 """
 	enter the name of the SQLite machine to connect to
@@ -23,6 +23,8 @@ import json
 name = 'Pi3B+'
 #name = 'Acer'
 ##########################
+
+#	get config from local database
 conf = db()
 otherIP = conf.select('select IP from nodes where name="%s" ' % name)[0][0]
 
@@ -46,10 +48,12 @@ class client():
 		self.client = udp_client.SimpleUDPClient(ip, port)
 		self.start()	# start the server part
 
+	"""Call this to get data sent back to us"""
 	def checkQ(self):
 		while not q.empty():
 			return eval(q.get())
 
+	"""Send normal command (like 'ls' or 'dir') and get reply"""
 	def send(self, cmd):
 		self.client.send_message("/command", cmd)
 		reptext = json.loads(q.get())
@@ -60,6 +64,7 @@ class client():
 			print(reptext)
 		time.sleep(1)
 
+	"""Send SQL command, then call checkQ() to get the reply"""
 	def sendSQL(self, cmd):
 		self.client.send_message("/SQLcommand", cmd)
 		time.sleep(1)
@@ -77,12 +82,20 @@ class client():
 		time.sleep(1)
 
 if __name__ == "__main__":
+	"""
+	Example of how to use this class
+	"""
+	#	connect to the other side
 	clint = client(otherIP, 8889)
+	#	send SQL command to be executed there
 	clint.sendSQL('select * from employees')
+	#	get the reply
 	ret = clint.checkQ()
 	for rec in ret:
 		print(rec)
 	time.sleep(1)
+
+	#	send a normal command and ge the reply
 	clint.send('ls')
 	ret = clint.checkQ()
 	print(ret)
