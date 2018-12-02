@@ -99,7 +99,7 @@ if __name__ == "__main__":
 		sys.exit("no reply. Is oscommand running on the other side?")
 
 
-	#	send a normal command and ge the reply
+	#	send a normal command and get the reply
 	clint.send('ls')
 	ret = clint.checkQ()
 	print(ret)
