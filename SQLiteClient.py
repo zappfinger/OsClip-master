@@ -12,7 +12,7 @@ from pythonosc import dispatcher
 from pythonosc import osc_server, udp_client
 import threading
 from queue import Queue
-import time
+import time, sys
 import json
 from DBclass import *
 
@@ -90,10 +90,14 @@ if __name__ == "__main__":
 	#	send SQL command to be executed there
 	clint.sendSQL('select * from employees')
 	#	get the reply
-	ret = clint.checkQ()
-	for rec in ret:
-		print(rec)
-	time.sleep(1)
+	try:
+		ret = clint.checkQ()
+		for rec in ret:
+			print(rec)
+		time.sleep(1)
+	except:
+		sys.exit("no reply. Is oscommand running on the other side?")
+
 
 	#	send a normal command and ge the reply
 	clint.send('ls')
